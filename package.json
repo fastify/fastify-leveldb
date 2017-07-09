@@ -1,0 +1,35 @@
+{
+  "name": "fastify-leveldb",
+  "version": "0.1.0",
+  "description": "Plugin to share a common LevelDB connection across Fastify.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tap test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastify/fastify-leveldb.git"
+  },
+  "keywords": [
+    "fastify",
+    "level",
+    "leveldb",
+    "database"
+  ],
+  "author": "Tomas Della Vedova - @delvedor (http://delved.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fastify/fastify-leveldb/issues"
+  },
+  "homepage": "https://github.com/fastify/fastify-leveldb#readme",
+  "dependencies": {
+    "fastify-plugin": "^0.1.0",
+    "level": "^1.7.0"
+  },
+  "devDependencies": {
+    "fastify": "^0.24.0",
+    "rimraf": "^2.6.1",
+    "standard": "^10.0.2",
+    "tap": "^10.7.0"
+  }
+}
