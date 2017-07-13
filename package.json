@@ -27,7 +27,7 @@
     "level": "^1.7.0"
   },
   "devDependencies": {
-    "fastify": "^0.24.0",
+    "fastify": "^0.25.0",
     "rimraf": "^2.6.1",
     "standard": "^10.0.2",
     "tap": "^10.7.0"
