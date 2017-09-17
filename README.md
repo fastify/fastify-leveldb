@@ -5,7 +5,7 @@
 
 Fastify LevelDB connection plugin, with this you can share the same Level connection in every part of your server.
 
-Under the hood [Level](/https://github.com/Level/level) is used, the options that you pass to register will be passed to Level.
+Under the hood [Level](https://github.com/Level/level) is used, the options that you pass to register will be passed to Level.
 
 ## Install
 ```
