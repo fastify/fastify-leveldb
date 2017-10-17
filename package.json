@@ -24,7 +24,7 @@
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "dependencies": {
     "fastify-plugin": "^0.1.0",
-    "level": "^1.7.0"
+    "level": "^2.0.0"
   },
   "devDependencies": {
     "fastify": "^0.24.0",
