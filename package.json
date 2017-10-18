@@ -22,14 +22,17 @@
     "url": "https://github.com/fastify/fastify-leveldb/issues"
   },
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
-    "fastify-plugin": "^0.1.0",
+    "fastify-plugin": "^0.1.1",
     "level": "^2.0.0"
   },
   "devDependencies": {
-    "fastify": "^0.24.0",
-    "rimraf": "^2.6.1",
-    "standard": "^10.0.2",
-    "tap": "^10.7.0"
+    "fastify": "^0.30.2",
+    "rimraf": "^2.6.2",
+    "standard": "^10.0.3",
+    "tap": "^10.7.2"
   }
 }
