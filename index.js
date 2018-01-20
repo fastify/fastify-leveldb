@@ -20,4 +20,7 @@ function close (fastify, done) {
   fastify.level.close(done)
 }
 
-module.exports = fp(levelPlugin, '>=0.13.1')
+module.exports = fp(levelPlugin, {
+  fastify: '>=0.39.0',
+  name: 'fastify-leveldb'
+})
