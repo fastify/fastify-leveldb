@@ -27,12 +27,12 @@
   },
   "dependencies": {
     "fastify-plugin": "^0.2.1",
-    "level": "^2.0.0"
+    "level": "^3.0.0"
   },
   "devDependencies": {
     "fastify": "^1.0.0-rc.1",
     "rimraf": "^2.6.2",
-    "standard": "^10.0.3",
+    "standard": "^11.0.0",
     "tap": "^11.0.1"
   }
 }
