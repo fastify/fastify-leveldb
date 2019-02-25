@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "fastify-plugin": "^1.0.0",
-    "level": "^3.0.0"
+    "level": "^4.0.0"
   },
   "devDependencies": {
     "fastify": "^2.0.0",
