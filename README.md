@@ -9,6 +9,8 @@ Fastify LevelDB connection plugin, with this you can share the same Level connec
 
 Under the hood [Level](https://github.com/Level/level) is used, the options that you pass to register will be passed to Level.
 
+This plugin works with `level@5.x.x`. If you need `level@4.x.x` install the version `1.x.x` of this plugin.
+
 ## Install
 ```
 npm i fastify-leveldb --save
