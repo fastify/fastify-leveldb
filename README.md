@@ -21,6 +21,7 @@ You can access LevelDB via `fastify.level`.
 ```js
 const fastify = require('fastify')()
 
+fastify.register(require('fastify-formbody'))
 fastify.register(require('fastify-leveldb'), {
   name: 'db'
 }, err => {
