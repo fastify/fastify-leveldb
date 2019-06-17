@@ -9,7 +9,7 @@ const encode = require('encoding-down')
 
 // mostly from level-packager
 const levelMore = (location, options) => {
-  if (typeof options !== 'object' || options === null)  options = {}
+  if (typeof options !== 'object' || options === null) options = {}
   const store = options.store || leveldown
   ;[ 'destroy', 'repair' ].forEach(function (m) {
     if (typeof store[m] === 'function') {
@@ -19,7 +19,6 @@ const levelMore = (location, options) => {
 
   return levelup(encode(store(location), options), options)
 }
-
 
 levelMore.errors = levelup.errors
 
