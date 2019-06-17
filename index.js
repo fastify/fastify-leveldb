@@ -5,12 +5,11 @@ const levelup = require('levelup')
 const leveldown = require('leveldown')
 const encode = require('encoding-down')
 
-// const level = require('level')
-
 // mostly from level-packager
 const levelMore = (location, options) => {
   if (typeof options !== 'object' || options === null) options = {}
   const store = options.store || leveldown
+  delete options.store
   ;[ 'destroy', 'repair' ].forEach(function (m) {
     if (typeof store[m] === 'function') {
       levelMore[m] = () => store[m].apply(store, arguments)
@@ -23,8 +22,9 @@ const levelMore = (location, options) => {
 levelMore.errors = levelup.errors
 
 function levelPlugin (fastify, opts, next) {
-  console.log('OPTS', opts)
-  if (!opts.name && (!opts.options || !opts.options.store)) return next(new Error('Missing database name'))
+  if (!opts.name && (!opts.options || !opts.options.store)) {
+    return next(new Error('Missing database name'))
+  }
   opts.options = opts.options || {}
 
   fastify
