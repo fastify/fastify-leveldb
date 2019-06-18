@@ -19,7 +19,7 @@ npm i fastify-leveldb --save
 Add it to you project with `register` and you are done!
 You can access LevelDB via `fastify.level`.
 ```js
-const fastify = require('fastify')
+const fastify = require('fastify')()
 
 fastify.register(require('fastify-leveldb'), {
   name: 'db'
