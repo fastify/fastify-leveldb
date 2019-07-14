@@ -10,7 +10,7 @@ const levelMore = (location, options) => {
   if (typeof options !== 'object' || options === null) options = {}
   const store = options.store || leveldown
   delete options.store
-  ;[ 'destroy', 'repair' ].forEach(function (m) {
+  ;['destroy', 'repair'].forEach(function (m) {
     if (typeof store[m] === 'function') {
       levelMore[m] = () => store[m].apply(store, arguments)
     }
