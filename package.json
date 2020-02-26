@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.6.0"
   },
   "dependencies": {
     "fastify-plugin": "^1.0.0",
