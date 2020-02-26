@@ -1,7 +1,9 @@
 'use strict'
 
+const util = require('util')
+
 const fp = require('fastify-plugin')
-const levelup = require('levelup')
+const levelup = util.promisify(require('levelup'))
 const leveldown = require('leveldown')
 const encode = require('encoding-down')
 
@@ -27,11 +29,16 @@ function levelPlugin (fastify, opts, next) {
   }
   opts.options = opts.options || {}
 
-  fastify
-    .decorate('level', levelMore(opts.name, opts.options))
-    .addHook('onClose', close)
+  // asynchronous mode to catch possible init errors
+  levelMore(opts.name, opts.options)
+    .then((db) => {
+      fastify
+        .decorate('level', db)
+        .addHook('onClose', close)
 
-  next()
+      next()
+    })
+    .catch(next)
 }
 
 function close (fastify, done) {
