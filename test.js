@@ -13,6 +13,19 @@ t.tearDown(() => {
   })
 })
 
+test('throw on database open error v2', t => {
+  t.plan(3)
+
+  const fastify = Fastify()
+  fastify
+    .register(level, { name: '/test' })
+    .ready(err => {
+      t.ok(err)
+      t.equal(err.message, 'IO error: /test/LOCK: No such file or directory')
+      t.pass('cannot write to /test, as expected')
+    })
+})
+
 test('level namespace should exist', t => {
   t.plan(3)
 
