@@ -1,6 +1,6 @@
 # fastify-leveldb
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)  ![Node CI](https://github.com/fastify/fastify-leveldb/workflows/Node%20CI/badge.svg)
 
 
 Fastify LevelDB connection plugin, with this you can share the same Level connection in every part of your server.
