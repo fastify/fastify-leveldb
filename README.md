@@ -1,44 +1,37 @@
 # fastify-leveldb
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fastify/fastify-leveldb.svg)](https://greenkeeper.io/)
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)  [![Build Status](https://travis-ci.org/fastify/fastify-leveldb.svg?branch=master)](https://travis-ci.org/fastify/fastify-leveldb)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
 
 Fastify LevelDB connection plugin, with this you can share the same Level connection in every part of your server.
 
 Under the hood [Levelup](https://github.com/Level/levelup) is used, the options that you pass to register will be passed to Levelup.
 
-This plugin works with `level@5.x.x`. If you need `level@4.x.x` install the version `1.x.x` of this plugin.
-
 ## Install
 ```
 npm i fastify-leveldb --save
 ```
+
 ## Usage
-Add it to you project with `register` and you are done!
-You can access LevelDB via `fastify.level`.
+Add it to you project with `register`, configure the database name and you are done!
+
+You can access LevelDB via `fastify.level[name]`.
 ```js
 const fastify = require('fastify')()
 
-fastify.register(require('fastify-leveldb'), {
-  name: 'db'
-}, err => {
-  if (err) throw err
+fastify.register(
+  require('fastify-leveldb'),
+  { name: 'db' }
+)
+
+fastify.get('/foo', async function (req, reply) {
+  const val = await this.level.db.get(req.query.key)
+  return val
 })
 
-fastify.get('/foo', (req, reply) => {
-  const { level } = fastify
-  level.get(req.query.key, (err, val) => {
-    reply.send(err || val)
-  })
-})
-
-fastify.post('/foo', (req, reply) => {
-  const { level } = fastify
-  level.put(req.body.key, req.body.value, (err) => {
-    reply.send(err || { status: 'ok' })
-  })
+fastify.post('/foo', async function (req, reply) {
+  await this.level.db.put(req.body.key, req.body.value)
+  return { status: 'ok' }
 })
 
 fastify.listen(3000, err => {
@@ -59,11 +52,10 @@ Next, initialize the plugin with the given store:
 
 ```js
 fastify.register(require('fastify-leveldb'), {
+  name: 'db',
   options: {
     store: require('memdown')
   }
-}, err => {
-  if (err) throw err
 })
 ```
 
