@@ -23,20 +23,20 @@
   },
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "dependencies": {
-    "fastify-plugin": "^1.0.0",
-    "leveldown": "^5.1.0",
-    "levelup": "^4.0.2",
-    "encoding-down": "^6.0.2"
+    "encoding-down": "^6.3.0",
+    "fastify-plugin": "^2.0.0",
+    "leveldown": "^5.6.0",
+    "levelup": "^4.4.0"
   },
   "devDependencies": {
-    "fastify": "^2.0.0",
-    "memdown": "^5.0.0",
-    "rimraf": "^3.0.0",
-    "standard": "^14.1.0",
-    "tap": "^12.6.5"
+    "fastify": "^3.0.0-alpha.1",
+    "memdown": "^5.1.0",
+    "rimraf": "^3.0.2",
+    "standard": "^14.3.3",
+    "tap": "^14.10.7"
   },
   "greenkeeper": {
     "ignore": [

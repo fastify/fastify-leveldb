@@ -6,7 +6,7 @@ const leveldown = require('leveldown')
 const encode = require('encoding-down')
 
 // mostly from level-packager
-const levelMore = (location, options) => {
+function levelMore (location, options, next) {
   if (typeof options !== 'object' || options === null) options = {}
   const store = options.store || leveldown
   delete options.store
@@ -16,26 +16,32 @@ const levelMore = (location, options) => {
     }
   })
 
-  return levelup(encode(store(location), options), options)
+  return levelup(encode(store(location), options), options, next)
 }
 
 levelMore.errors = levelup.errors
 
 function levelPlugin (fastify, opts, next) {
-  if (!opts.name && (!opts.options || !opts.options.store)) {
+  if (!opts.name) {
     return next(new Error('Missing database name'))
   }
+
+  const { name } = opts
   opts.options = opts.options || {}
 
-  fastify
-    .decorate('level', levelMore(opts.name, opts.options))
-    .addHook('onClose', close)
+  if (!fastify.hasDecorator('level')) {
+    fastify.decorate('level', {})
+  }
 
-  next()
-}
+  if (fastify.level[name]) {
+    return next(new Error(`Level namespace already used: ${name}`))
+  }
 
-function close (fastify, done) {
-  fastify.level.close(done)
+  fastify.addHook('onClose', (instance, done) => {
+    instance.level[name].close(done)
+  })
+
+  fastify.level[name] = levelMore(name, opts.options, next)
 }
 
 module.exports = fp(levelPlugin, {
