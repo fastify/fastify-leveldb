@@ -26,7 +26,7 @@ function levelPlugin (fastify, opts, next) {
     return next(new Error('Missing database name'))
   }
 
-  const { name } = opts
+  const { name, path } = opts
   opts.options = opts.options || {}
 
   if (!fastify.hasDecorator('level')) {
@@ -41,7 +41,7 @@ function levelPlugin (fastify, opts, next) {
     instance.level[name].close(done)
   })
 
-  fastify.level[name] = levelMore(name, opts.options, next)
+  fastify.level[name] = levelMore(path || name, opts.options, next)
 }
 
 module.exports = fp(levelPlugin, {
