@@ -1,6 +1,7 @@
 'use strict'
 
 const t = require('tap')
+const { existsSync } = require('fs')
 const test = t.test
 const rimraf = require('rimraf')
 const Fastify = require('fastify')
@@ -8,17 +9,9 @@ const memdown = require('memdown')
 const level = require('./')
 
 t.tearDown(() => {
-  rimraf('./test', err => {
-    if (err) throw err
-  })
-
-  rimraf('./foo', err => {
-    if (err) throw err
-  })
-
-  rimraf('./bar', err => {
-    if (err) throw err
-  })
+  rimraf.sync('./test')
+  rimraf.sync('./foo')
+  rimraf.sync('./bar')
 })
 
 test('level namespace should exist', t => {
@@ -101,12 +94,13 @@ test('namespaces', async t => {
 })
 
 test('reuse namespaces', t => {
-  t.plan(1)
+  t.plan(2)
   const fastify = Fastify()
   fastify.register(level, { name: 'foo' })
   fastify.register(level, { name: 'foo' })
   fastify.ready(err => {
     t.is(err.message, 'Level namespace already used: foo')
+    fastify.close(() => t.pass('closed'))
   })
 })
 
@@ -119,5 +113,19 @@ test('store json', async t => {
   })
   await fastify.level.test.put('greeting', { hello: 'world' })
   t.deepEqual(await fastify.level.test.get('greeting'), { hello: 'world' })
+  await fastify.close()
+})
+
+test('custom path', async t => {
+  t.plan(4)
+  const fastify = Fastify()
+  await fastify.register(level, { name: 'first', path: 'foo' })
+  await fastify.register(level, { name: 'second', path: 'bar' })
+  await fastify.level.first.put('a', 'b')
+  await fastify.level.second.put('a', 'b')
+  t.equal(await fastify.level.second.get('a'), 'b')
+  t.equal(await fastify.level.second.get('a'), 'b')
+  t.true(existsSync('./foo'))
+  t.true(existsSync('./bar'))
   await fastify.close()
 })
