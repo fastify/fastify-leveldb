@@ -7,14 +7,13 @@ const encode = require('encoding-down')
 
 // mostly from level-packager
 function levelMore (location, options, next) {
-  if (typeof options !== 'object' || options === null) options = {}
   const store = options.store || leveldown
   delete options.store
-  ;['destroy', 'repair'].forEach(function (m) {
+  for (const m of ['destroy', 'repair']) {
     if (typeof store[m] === 'function') {
-      levelMore[m] = () => store[m].apply(store, arguments)
+      levelMore[m] = store[m].bind(store)
     }
-  })
+  }
 
   return levelup(encode(store(location), options), options, next)
 }
@@ -45,6 +44,6 @@ function levelPlugin (fastify, opts, next) {
 }
 
 module.exports = fp(levelPlugin, {
-  fastify: '>=1.0.0',
+  fastify: '^3.0.0',
   name: 'fastify-leveldb'
 })

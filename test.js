@@ -29,6 +29,17 @@ test('level namespace should exist', t => {
     })
 })
 
+test('missing database name', t => {
+  t.plan(1)
+
+  const fastify = Fastify()
+  fastify
+    .register(level, { name: undefined })
+    .ready(err => {
+      t.equal(err.message, 'Missing database name')
+    })
+})
+
 test('level should support leveldb operations', t => {
   t.plan(5)
 
