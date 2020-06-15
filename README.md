@@ -59,6 +59,14 @@ fastify.register(require('fastify-leveldb'), {
 })
 ```
 
+By default the path where the db will be created is the name option, but you can also pass a custom path as well.
+```js
+fastify.register(
+  require('fastify-leveldb'),
+  { name: 'db', path: '.local' }
+)
+```
+
 ## Acknowledgements
 
 This project is kindly sponsored by:
