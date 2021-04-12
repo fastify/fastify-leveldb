@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "fastify": "^3.0.0",
-    "memdown": "^5.1.0",
+    "memdown": "^6.0.0",
     "rimraf": "^3.0.2",
     "standard": "^16.0.3",
     "tap": "^14.10.7"
