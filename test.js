@@ -8,7 +8,7 @@ const Fastify = require('fastify')
 const memdown = require('memdown')
 const level = require('./')
 
-t.tearDown(() => {
+t.teardown(() => {
   rimraf.sync('./test')
   rimraf.sync('./foo')
   rimraf.sync('./bar')
@@ -110,7 +110,7 @@ test('reuse namespaces', t => {
   fastify.register(level, { name: 'foo' })
   fastify.register(level, { name: 'foo' })
   fastify.ready(err => {
-    t.is(err.message, 'Level namespace already used: foo')
+    t.equal(err.message, 'Level namespace already used: foo')
     fastify.close(() => t.pass('closed'))
   })
 })
@@ -123,7 +123,7 @@ test('store json', async t => {
     options: { valueEncoding: 'json' }
   })
   await fastify.level.test.put('greeting', { hello: 'world' })
-  t.deepEqual(await fastify.level.test.get('greeting'), { hello: 'world' })
+  t.same(await fastify.level.test.get('greeting'), { hello: 'world' })
   await fastify.close()
 })
 
@@ -136,7 +136,7 @@ test('custom path', async t => {
   await fastify.level.second.put('a', 'b')
   t.equal(await fastify.level.second.get('a'), 'b')
   t.equal(await fastify.level.second.get('a'), 'b')
-  t.true(existsSync('./foo'))
-  t.true(existsSync('./bar'))
+  t.ok(existsSync('./foo'))
+  t.ok(existsSync('./bar'))
   await fastify.close()
 })
