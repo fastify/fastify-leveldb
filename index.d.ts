@@ -6,7 +6,7 @@ export interface LevelDBOptions {
   path: string
 }
 
-type LevelDBInstances {
+interface LevelDBInstances {
   [key: string]: LevelUp
 }
 
@@ -19,7 +19,7 @@ declare module 'fastify' {
 
 // fastify-plugin automatically adds named export, so be sure to add also this type
 // the variable name is derived from `options.name` property if `module.exports.myPlugin` is missing
-export const levelDBPlugin: FastifyPlugin<LevelDBOptions>;
+export const fastifyLeveldb: FastifyPlugin<LevelDBOptions>;
 
 // fastify-plugin automatically adds `.default` property to the exported plugin. See the note below
-export default levelDBPlugin;
+export default fastifyLeveldb;

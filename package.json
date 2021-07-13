@@ -27,13 +27,13 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "@types/levelup": "^4.3.3",
     "encoding-down": "^7.0.0",
     "fastify-plugin": "^3.0.0",
     "leveldown": "^6.0.0",
     "levelup": "^5.0.0"
   },
   "devDependencies": {
+    "@types/levelup": "^4.3.3",
     "fastify": "^3.0.0",
     "memdown": "^6.0.0",
     "rimraf": "^3.0.2",
