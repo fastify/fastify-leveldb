@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "standard && tap --100 test.js"
+    "test": "standard && tsd && tap --100 test.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "memdown": "^6.0.0",
     "rimraf": "^3.0.2",
     "standard": "^16.0.3",
-    "tap": "^15.0.1"
+    "tap": "^15.0.1",
+    "tsd": "^0.17.0"
   }
 }
