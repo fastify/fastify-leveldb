@@ -33,7 +33,7 @@
     "levelup": "^5.0.0"
   },
   "devDependencies": {
-    "@types/levelup": "^4.3.3",
+    "@types/levelup": "^5.1.0",
     "fastify": "^3.0.0",
     "memdown": "^6.0.0",
     "rimraf": "^3.0.2",
