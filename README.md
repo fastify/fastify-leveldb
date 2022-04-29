@@ -1,7 +1,7 @@
-# fastify-leveldb
+# @fastify/leveldb
 
 ![CI](https://github.com/fastify/fastify-leveldb/workflows/CI/badge.svg)
-[![NPM version](https://img.shields.io/npm/v/fastify-leveldb.svg?style=flat)](https://www.npmjs.com/package/fastify-leveldb)
+[![NPM version](https://img.shields.io/npm/v/@fastify/leveldb.svg?style=flat)](https://www.npmjs.com/package/@fastify/leveldb)
 [![Known Vulnerabilities](https://snyk.io/test/github/fastify/fastify-leveldb/badge.svg)](https://snyk.io/test/github/fastify/fastify-leveldb)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
 
@@ -12,7 +12,7 @@ Under the hood [Levelup](https://github.com/Level/levelup) is used, the options 
 
 ## Install
 ```
-npm i fastify-leveldb --save
+npm i @fastify/leveldb --save
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ You can access LevelDB via `fastify.level[name]`.
 const fastify = require('fastify')()
 
 fastify.register(
-  require('fastify-leveldb'),
+  require('@fastify/leveldb'),
   { name: 'db' }
 )
 
@@ -54,7 +54,7 @@ npm install memdown
 Next, initialize the plugin with the given store:
 
 ```js
-fastify.register(require('fastify-leveldb'), {
+fastify.register(require('@fastify/leveldb'), {
   name: 'db',
   options: {
     store: require('memdown')
@@ -65,7 +65,7 @@ fastify.register(require('fastify-leveldb'), {
 By default the path where the db will be created is the name option, but you can also pass a custom path as well.
 ```js
 fastify.register(
-  require('fastify-leveldb'),
+  require('@fastify/leveldb'),
   { name: 'db', path: '.local' }
 )
 ```
