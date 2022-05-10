@@ -44,6 +44,6 @@ function levelPlugin (fastify, opts, next) {
 }
 
 module.exports = fp(levelPlugin, {
-  fastify: '^3.0.0',
-  name: 'fastify-leveldb'
+  fastify: '^4.0.0',
+  name: '@fastify/leveldb'
 })
