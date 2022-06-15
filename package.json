@@ -23,9 +23,6 @@
     "url": "https://github.com/fastify/fastify-leveldb/issues"
   },
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "dependencies": {
     "encoding-down": "^7.0.0",
     "fastify-plugin": "^3.0.0",
