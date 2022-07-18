@@ -25,7 +25,7 @@
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "dependencies": {
     "encoding-down": "^7.0.0",
-    "fastify-plugin": "^3.0.0",
+    "fastify-plugin": "^4.0.0",
     "leveldown": "^6.0.0",
     "levelup": "^5.0.0"
   },
