@@ -11,7 +11,7 @@ Under the hood [Levelup](https://github.com/Level/levelup) is used, the options 
 
 ## Install
 ```
-npm i @fastify/leveldb --save
+npm i @fastify/leveldb
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ By default, [Leveldown](https://github.com/Level/leveldown) is used for the stor
 First, you must install the store:
 
 ```sh
-npm install memdown
+npm i memdown
 ```
 
 Next, initialize the plugin with the given store:
