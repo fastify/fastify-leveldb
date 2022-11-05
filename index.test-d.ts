@@ -11,5 +11,5 @@ app
   .after(async (err) => {
     const dbTest = app.level.test;
     await dbTest.put("sample", "value");
-    const value = await dbTest.get("sample");
+    await dbTest.get("sample");
   });
