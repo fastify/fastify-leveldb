@@ -1,5 +1,7 @@
 import fastify from 'fastify';
-import fastifyLeveldb from '..';
+import { LevelUp } from 'levelup';
+import { expectAssignable, expectDeprecated, expectType } from 'tsd';
+import fastifyLeveldb, { FastifyLeveldbOptions, LevelDBOptions } from '..';
 
 const app = fastify();
 
@@ -9,7 +11,8 @@ app
     path: '.local'
   })
   .after(async (err) => {
-    const dbTest = app.level.test;
-    await dbTest.put("sample", "value");
-    const value = await dbTest.get("sample");
+    expectType<LevelUp>(app.level.test)
   });
+
+expectDeprecated({} as LevelDBOptions)
+expectAssignable<FastifyLeveldbOptions>({} as LevelDBOptions)

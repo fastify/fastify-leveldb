@@ -1,25 +1,29 @@
-import { FastifyPlugin } from "fastify";
+import { FastifyPluginCallback } from "fastify";
 import { LevelUp } from "levelup";
 
-export interface LevelDBOptions {
-  name: string,
-  path: string
-}
-
-interface LevelDBInstances {
-  [key: string]: LevelUp
-}
-
-// Most importantly, use declaration merging to add the custom property to the Fastify type system
 declare module 'fastify' {
   interface FastifyInstance {
-    level: LevelDBInstances
+    level: {
+      [key: string]: LevelUp
+    }
   }
 }
 
-// fastify-plugin automatically adds named export, so be sure to add also this type
-// the variable name is derived from `options.name` property if `module.exports.myPlugin` is missing
-export const fastifyLeveldb: FastifyPlugin<LevelDBOptions>;
+type FastifyLeveldb = FastifyPluginCallback<fastifyLeveldb.FastifyLeveldbOptions>;
 
-// fastify-plugin automatically adds `.default` property to the exported plugin. See the note below
-export default fastifyLeveldb;
+declare namespace fastifyLeveldb {
+  export interface FastifyLeveldbOptions {
+    name: string,
+    path: string
+  }
+  /**
+   * @deprecated Use FastifyLeveldbOptions instead
+   */
+  export type LevelDBOptions = FastifyLeveldbOptions
+
+  export const fastifyLeveldb: FastifyLeveldb
+  export { fastifyLeveldb as default }
+}
+
+declare function fastifyLeveldb(...params: Parameters<FastifyLeveldb>): ReturnType<FastifyLeveldb>
+export = fastifyLeveldb
