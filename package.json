@@ -3,7 +3,7 @@
   "version": "5.0.1",
   "description": "Plugin to share a common LevelDB connection across Fastify.",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "scripts": {
     "lint": "standard",
     "test": "tsd && tap --100 test.js"

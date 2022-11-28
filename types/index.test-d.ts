@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import fastifyLeveldb from '../fastify-leveldb';
+import fastifyLeveldb from '..';
 
 const app = fastify();
 
