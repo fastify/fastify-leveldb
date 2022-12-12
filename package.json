@@ -3,9 +3,12 @@
   "version": "5.0.1",
   "description": "Plugin to share a common LevelDB connection across Fastify.",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "scripts": {
-    "test": "standard && tsd && tap --100 test.js"
+    "lint": "standard",
+    "test": "npm run test:unit && npm run test:typescript",
+    "test:typescript": "tsd",
+    "test:unit": "tap"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
     "levelup": "^5.0.0"
   },
   "devDependencies": {
+    "@fastify/pre-commit": "^2.0.2",
     "@types/levelup": "^5.1.0",
     "fastify": "^4.0.0-rc.3",
     "memdown": "^6.0.0",
@@ -40,5 +44,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
 }

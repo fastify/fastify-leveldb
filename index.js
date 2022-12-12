@@ -20,7 +20,7 @@ function levelMore (location, options, next) {
 
 levelMore.errors = levelup.errors
 
-function levelPlugin (fastify, opts, next) {
+function fastifyLeveldb (fastify, opts, next) {
   if (!opts.name) {
     return next(new Error('Missing database name'))
   }
@@ -43,7 +43,9 @@ function levelPlugin (fastify, opts, next) {
   fastify.level[name] = levelMore(path || name, opts.options, next)
 }
 
-module.exports = fp(levelPlugin, {
+module.exports = fp(fastifyLeveldb, {
   fastify: '4.x',
   name: '@fastify/leveldb'
 })
+module.exports.default = fastifyLeveldb
+module.exports.fastifyLeveldb = fastifyLeveldb
