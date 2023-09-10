@@ -1,7 +1,7 @@
 'use strict'
 
 const t = require('tap')
-const { existsSync } = require('fs')
+const { existsSync } = require('node:fs')
 const test = t.test
 const rimraf = require('rimraf')
 const Fastify = require('fastify')
