@@ -29,14 +29,14 @@
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "dependencies": {
     "encoding-down": "^7.0.0",
-    "fastify-plugin": "^4.0.0",
+    "fastify-plugin": "^5.0.0-pre.fv5.1",
     "leveldown": "^6.0.0",
     "levelup": "^5.0.0"
   },
   "devDependencies": {
-    "@fastify/pre-commit": "^2.0.2",
+    "@fastify/pre-commit": "^2.1.0",
     "@types/levelup": "^5.1.0",
-    "fastify": "^4.0.0-rc.3",
+    "fastify": "^5.0.0-alpha.3",
     "memdown": "^6.0.0",
     "rimraf": "^5.0.0",
     "standard": "^17.0.0",
