@@ -44,7 +44,7 @@ function fastifyLeveldb (fastify, opts, next) {
 }
 
 module.exports = fp(fastifyLeveldb, {
-  fastify: '4.x',
+  fastify: '5.x',
   name: '@fastify/leveldb'
 })
 module.exports.default = fastifyLeveldb
