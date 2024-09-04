@@ -1,6 +1,6 @@
 {
   "name": "@fastify/leveldb",
-  "version": "6.0.0-pre.fv5.2",
+  "version": "6.0.0",
   "description": "Plugin to share a common LevelDB connection across Fastify.",
   "main": "index.js",
   "type": "commonjs",
@@ -29,14 +29,14 @@
   "homepage": "https://github.com/fastify/fastify-leveldb#readme",
   "dependencies": {
     "encoding-down": "^7.0.0",
-    "fastify-plugin": "^5.0.0-pre.fv5.1",
+    "fastify-plugin": "^5.0.0",
     "leveldown": "^6.0.0",
     "levelup": "^5.0.0"
   },
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
     "@types/levelup": "^5.1.0",
-    "fastify": "^5.0.0-alpha.3",
+    "fastify": "^5.0.0-alpha.4",
     "memdown": "^6.0.0",
     "rimraf": "^6.0.1",
     "standard": "^17.0.0",
