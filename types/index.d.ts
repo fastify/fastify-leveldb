@@ -1,5 +1,5 @@
-import { FastifyPluginCallback } from "fastify";
-import { LevelUp } from "levelup";
+import { FastifyPluginCallback } from 'fastify'
+import { LevelUp } from 'levelup'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -9,7 +9,7 @@ declare module 'fastify' {
   }
 }
 
-type FastifyLeveldb = FastifyPluginCallback<fastifyLeveldb.FastifyLeveldbOptions>;
+type FastifyLeveldb = FastifyPluginCallback<fastifyLeveldb.FastifyLeveldbOptions>
 
 declare namespace fastifyLeveldb {
   export interface FastifyLeveldbOptions {
@@ -25,5 +25,5 @@ declare namespace fastifyLeveldb {
   export { fastifyLeveldb as default }
 }
 
-declare function fastifyLeveldb(...params: Parameters<FastifyLeveldb>): ReturnType<FastifyLeveldb>
+declare function fastifyLeveldb (...params: Parameters<FastifyLeveldb>): ReturnType<FastifyLeveldb>
 export = fastifyLeveldb
