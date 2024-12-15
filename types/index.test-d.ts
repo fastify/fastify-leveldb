@@ -10,7 +10,7 @@ app
     name: 'test',
     path: '.local'
   })
-  .after(async (err) => {
+  .after(async () => {
     expectType<LevelUp>(app.level.test)
   })
 
