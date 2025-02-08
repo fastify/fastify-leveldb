@@ -1,7 +1,0 @@
-ts: false
-jsx: false
-flow: false
-coverage: true
-
-files:
-  - test/**/*.test.js
