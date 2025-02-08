@@ -43,7 +43,7 @@ test('level should support leveldb operations', async t => {
   await fastify.level.test_db.put('a', 'b')
   const val = await fastify.level.test_db.get('a')
   t.assert.deepStrictEqual(val, 'b')
-  await fastify.close()
+  return fastify.close()
 })
 
 test('level should support other stores (memdown)', async t => {
@@ -58,7 +58,7 @@ test('level should support other stores (memdown)', async t => {
 
   const val = await fastify.level.test_db.get('a')
   t.assert.deepStrictEqual(val, 'b')
-  await fastify.close()
+  return fastify.close()
 })
 
 test('level should support leveldb operations (async await)', async t => {
@@ -68,7 +68,7 @@ test('level should support leveldb operations (async await)', async t => {
   await fastify.level.test_db.put('a', 'b')
   const val = await fastify.level.test_db.get('a')
   t.assert.deepStrictEqual(val, 'b')
-  await fastify.close()
+  return fastify.close()
 })
 
 test('namespaces', async t => {
@@ -80,7 +80,7 @@ test('namespaces', async t => {
   await fastify.level.bar.put('a', 'b')
   t.assert.deepStrictEqual(await fastify.level.foo.get('a'), 'b')
   t.assert.deepStrictEqual(await fastify.level.bar.get('a'), 'b')
-  await fastify.close()
+  return fastify.close()
 })
 
 test('reuse namespaces', async t => {
@@ -89,6 +89,7 @@ test('reuse namespaces', async t => {
   fastify.register(fastifyLeveldb, { name: 'foo' })
   fastify.register(fastifyLeveldb, { name: 'foo' })
   await t.assert.rejects(() => fastify.ready(), undefined, 'Level namespace already used: foo')
+  return fastify.close()
 })
 
 test('store json', async t => {
@@ -100,7 +101,7 @@ test('store json', async t => {
   })
   await fastify.level.test_db.put('greeting', { hello: 'world' })
   t.assert.deepStrictEqual(await fastify.level.test_db.get('greeting'), { hello: 'world' })
-  await fastify.close()
+  return fastify.close()
 })
 
 test('custom path', async t => {
@@ -114,5 +115,5 @@ test('custom path', async t => {
   t.assert.deepStrictEqual(await fastify.level.second.get('a'), 'b')
   t.assert.ok(existsSync('./foo'))
   t.assert.ok(existsSync('./bar'))
-  await fastify.close()
+  return fastify.close()
 })
