@@ -17,11 +17,11 @@ npm i @fastify/leveldb
 ### Compatibility
 | Plugin version | Fastify version |
 | ---------------|-----------------|
-| `^6.x`         | `^5.x`          |
+| `>=6.x`        | `^5.x`          |
 | `^5.x`         | `^4.x`          |
-| `^3.x`         | `^3.x`          |
-| `^0.x`         | `^2.x`          |
-| `^0.x`         | `^1.x`          |
+| `>=3.x <5.x`   | `^3.x`          |
+| `^0.x <3.x`    | `^2.x`          |
+| `^0.x <3.x`    | `^1.x`          |
 
 Please note that if a Fastify version is out of support, then so are the corresponding versions of this plugin
 in the table above.
