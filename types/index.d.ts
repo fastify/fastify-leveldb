@@ -14,7 +14,8 @@ type FastifyLeveldb = FastifyPluginCallback<fastifyLeveldb.FastifyLeveldbOptions
 declare namespace fastifyLeveldb {
   export interface FastifyLeveldbOptions {
     name: string,
-    path: string
+    path: string,
+    options: any
   }
   /**
    * @deprecated Use FastifyLeveldbOptions instead
