@@ -8,7 +8,8 @@ const app = fastify()
 app
   .register(fastifyLeveldb, {
     name: 'test',
-    path: '.local'
+    path: '.local',
+    options: { valueEncoding: 'json' }
   })
   .after(async (_err) => {
     expectType<LevelUp>(app.level.test)
