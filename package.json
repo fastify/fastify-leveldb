@@ -1,6 +1,6 @@
 {
   "name": "@fastify/leveldb",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Plugin to share a common LevelDB connection across Fastify.",
   "main": "index.js",
   "type": "commonjs",
